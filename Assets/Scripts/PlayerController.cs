@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,4 +21,13 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
+    //　Collider利用した衝突判定
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pick Up"))
+        {
+            other.gameObject.SetActive(false);            
+        }
+    }
 }
+
